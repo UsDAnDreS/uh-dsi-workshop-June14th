@@ -41,25 +41,39 @@ RUN conda install --quiet --yes \
     'r-htmltools=0.3*' \
     'r-sparklyr=0.7*' \
     'r-htmlwidgets=1.0*' \
-   # 'r-topicmodels=0.2*' \
     'r-ggplot2=2.2*' \
-   # 'r-tm=0.7*' \
-   # 'r-NLP=0.1*' \
-   # 'r-wordcloud=2.5*' \
     'r-RColorBrewer=1.1*' \
-   # 'r-SnowballC=0.5*' \
     'r-networkD3=0.4*' \
     'r-png=0.1*' \
     'r-extrafont=0.17*' \
-   # 'r-ndtv=0.1*' \
     'r-animation=2.5*' \
-   # 'r-networkDynamic=0.*' \
-   # 'r-sna=2*' \            
-   # 'r-statnet.common=4*' \
     'r-network=1.13.0*' \
     'r-igraph=1.2.1*' \
     'r-stringr=1.3*' \
     'r-readr=1.1*' \
+    'r-readxl=1.1*' \
+    'r-rlist=0.4*' \
+    'r-highcharter=0.5*' \
+    'r-irdisplay=0.4*' \
     'r-hexbin=1.27*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
+
+USER root
+
+# For rJava
+RUN apt-get update && apt-get install -y \
+    openjdk-8-jre \
+    openjdk-8-jdk 
+
+RUN apt-get clean
+
+##### R: COMMON PACKAGES
+# To let R find Java
+ENV LD_LIBRARY_PATH /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server
+RUN R CMD javareconf
+
+# Install R packages
+RUN R -e "install.packages(c('rJava', 'tabulizer'), repos='http://cran.rstudio.com/')"
+
+USER $NB_UID
