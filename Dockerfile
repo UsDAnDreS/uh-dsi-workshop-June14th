@@ -1,11 +1,10 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
+FROM jupyter/minimal-notebook
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
 USER root
-
-FROM jupyter/minimal-notebook
 
 # R pre-requisites
 RUN apt-get update && \
