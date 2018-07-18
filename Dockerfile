@@ -2,7 +2,7 @@
 # Distributed under the terms of the Modified BSD License.
 
 FROM python:2.7
-RUN pip install -r requirements.txt
+RUN pip install -r https://github.com/UsDAnDreS/uh-dsi-workshop-June14th/requirements.txt
 
 FROM jupyter/minimal-notebook
 
