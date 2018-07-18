@@ -25,7 +25,6 @@ RUN conda install --quiet --yes \
     'conda-forge::blas=*=openblas' \
     'ipywidgets=7.2*' \
     'pandas=0.23*' \
-    'matplotlib=2.2*' \
     'numpy=1.14*' \
     'numexpr=2.6*' \
     'matplotlib=2.2*' \
