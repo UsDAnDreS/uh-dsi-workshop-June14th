@@ -1,5 +1,9 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
+
+FROM python:2.7
+RUN pip install -r requirements.txt
+
 FROM jupyter/minimal-notebook
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
