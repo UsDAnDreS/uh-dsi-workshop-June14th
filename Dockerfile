@@ -4,17 +4,6 @@ FROM jupyter/minimal-notebook
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
-USER root
-
-# R pre-requisites
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    fonts-dejavu \
-    tzdata \
-    gfortran \
-    gcc && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 USER $NB_UID
 
 # Install Python 3 packages
@@ -24,8 +13,8 @@ RUN conda install --quiet --yes \
     'pandas=0.23*' \
     'matplotlib=2.2*' \
     'numpy=1.14*' \
-    'seaborn=0.8*'
-#    'jupyterhub=0.8*'
+    'seaborn=0.8*' \
+    'jupyterhub=0.8*'
 
 USER root
 
