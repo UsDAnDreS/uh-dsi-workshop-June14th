@@ -26,8 +26,8 @@ RUN conda install --quiet --yes \
     'pandas=0.23*' \
     'matplotlib=2.2*' \
     'numpy=1.14*' \
-    'seaborn=0.8*' \
-    'jupyterhub=0.8*'
+    'seaborn=0.8*'
+#    'jupyterhub=0.8*'
 FROM jupyter/minimal-notebook
 
 # Autoupdate notebooks https://github.com/data-8/nbgitpuller
