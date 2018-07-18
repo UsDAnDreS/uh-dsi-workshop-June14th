@@ -1,12 +1,11 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
-# FROM python:2.7
-# RUN pip install git+https://github.com/UsDAnDreS/uh-dsi-workshop-June14th/requirements.txt
-
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
 USER root
+
+FROM jupyter/minimal-notebook
 
 # R pre-requisites
 RUN apt-get update && \
@@ -28,7 +27,6 @@ RUN conda install --quiet --yes \
     'numpy=1.14*' \
     'seaborn=0.8*'
 #    'jupyterhub=0.8*'
-FROM jupyter/minimal-notebook
 
 # Autoupdate notebooks https://github.com/data-8/nbgitpuller
 RUN pip install git+https://github.com/data-8/nbgitpuller && \
