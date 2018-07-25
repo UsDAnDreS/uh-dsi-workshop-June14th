@@ -15,8 +15,7 @@ RUN apt-get update && \
     gfortran \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN module load R \
-    Rscript -e 'source("http://bioconductor.org/biocLite.R")' -e 'biocLite("graph")' -e 'biocLite("Rgraphviz")' -e 'install_github("sentiment140", "okugami79")' -e 'library("sentiment")'
+    
 
 USER $NB_UID
 
@@ -56,6 +55,8 @@ ENV LD_LIBRARY_PATH /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64:/usr/lib/jvm
 RUN R CMD javareconf
 
 # Install R packages
-RUN R -e "install.packages(c('rJava', 'tabulizer'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('rJava', 'tabulizer'), repos='http://cran.rstudio.com/')" \
+    Rscript -e 'source("http://bioconductor.org/biocLite.R")' -e 'biocLite("graph")' -e 'biocLite("Rgraphviz")' -e 'install_github("sentiment140", "okugami79")' -e 'library("sentiment")'
+
 
 USER $NB_UID
