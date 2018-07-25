@@ -31,7 +31,7 @@ RUN conda install --quiet --yes \
     'r-devtools=1.13*' \
     'r-rcurl=1.95*' \
     'r-ggplot2=2.2*' \
-    'r-twitteR=1.1*' \
+#    'r-twitteR=1.1*' \
     'r-tm=0.7*' \
     'r-data.table=1.11*' \
     'r-topicmodels=0.2*' \
@@ -55,7 +55,7 @@ ENV LD_LIBRARY_PATH /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64:/usr/lib/jvm
 RUN R CMD javareconf
 
 # Install R packages
-RUN R -e "install.packages(c('rJava', 'tabulizer'), repos='http://cran.rstudio.com/')" \
+RUN R -e "install.packages(c('rJava', 'tabulizer','twitteR'), repos='http://cran.rstudio.com/')" \
     Rscript -e 'source("http://bioconductor.org/biocLite.R")' -e 'biocLite("graph")' -e 'biocLite("Rgraphviz")' -e 'install_github("sentiment140", "okugami79")' -e 'library("sentiment")'
 
 
