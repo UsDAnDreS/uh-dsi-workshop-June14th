@@ -33,7 +33,7 @@ RUN conda install --quiet --yes \
     'r-ggplot2=2.2*' \
     'r-twitteR=1.1*' \
     'r-tm=0.7*' \
-    'r-data.table=1.1*' \
+    'r-data.table=1.11*' \
     'r-topicmodels=0.2*' \
     'r-wordcloud=2.5*' \
     'r-RColorBrewer=1.1*' && \
