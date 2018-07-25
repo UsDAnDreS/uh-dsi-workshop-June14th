@@ -9,6 +9,7 @@ USER root
 # R pre-requisites
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+    libfftw3-dev \
     fonts-dejavu \
     tzdata \
     gfortran \
