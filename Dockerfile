@@ -15,7 +15,8 @@ RUN apt-get update && \
     gfortran \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN Rscript -e 'source("http://bioconductor.org/biocLite.R")' -e 'biocLite("graph")' -e 'biocLite("Rgraphviz")' -e 'install_github("sentiment140", "okugami79")' -e 'library("sentiment")'
+RUN module load R \
+    Rscript -e 'source("http://bioconductor.org/biocLite.R")' -e 'biocLite("graph")' -e 'biocLite("Rgraphviz")' -e 'install_github("sentiment140", "okugami79")' -e 'library("sentiment")'
 
 USER $NB_UID
 
