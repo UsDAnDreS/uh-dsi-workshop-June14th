@@ -36,7 +36,7 @@ RUN conda install --quiet --yes \
     'r-data.table=1.1*' \
     'r-topicmodels=0.2*' \
     'r-wordcloud=2.5*' \
-    'r-RColorBrewer=1.1*' \
+    'r-RColorBrewer=1.1*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
