@@ -22,6 +22,7 @@ RUN pip install git+https://github.com/data-8/nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller
 
 # R packages
+RUN conda install -c defaults zeromq
 RUN conda install --quiet --yes \
     'r-base=3.4.1' \
     'r-irkernel=0.8*' \
