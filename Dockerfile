@@ -16,7 +16,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
-
 # R packages
 RUN conda install --quiet --yes \
     'r-base=3.4.1' \
