@@ -16,6 +16,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
+
+# Autoupdate notebooks https://github.com/data-8/nbgitpuller
+RUN pip install git+https://github.com/data-8/nbgitpuller && \
+    jupyter serverextension enable --py nbgitpuller
+    
 # R packages
 RUN conda install --quiet --yes \
     'r-base=3.4.1' \
