@@ -41,6 +41,27 @@ RUN conda install --quiet --yes \
     'r-htmltools=0.3*' \
     'r-sparklyr=0.7*' \
     'r-htmlwidgets=1.0*' \
+    'r-ggplot2=2.2*' \
+    'r-tm=0.7*' \
+    'r-data.table=1.11*' \
+    'r-topicmodels=0.2*' \
+    'r-wordcloud=2.5*' \
+    'r-RColorBrewer=1.1*' \
     'r-hexbin=1.27*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
+
+
+
+USER root
+
+
+##### R: COMMON PACKAGES
+
+# Install R packages
+RUN R -e "install.packages(c('twitteR'), repos='http://cran.rstudio.com/')" \
+    Rscript -e 'source("http://bioconductor.org/biocLite.R")' -e 'biocLite("graph")' -e 'biocLite("Rgraphviz")' 
+# -e 'require("devtools")' -e 'install_github("sentiment140", "okugami79")' -e 'library("sentiment")'
+
+
+USER $NB_UID
